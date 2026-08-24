@@ -1,4 +1,4 @@
-const searchInput = document.getElementById("searchInput"); 
+const searchInput = document.getElementById("searchInput");
 const Cards = document.getElementById("Cards");
 
 let productsList = [];
@@ -7,16 +7,47 @@ let productsList = [];
 fetch('https://dummyjson.com/products')
     .then(response => response.json())
     .then(data => {
-        productsList = data.products; 
+        productsList = data.products;
+        renderCategoryButtons(productsList);
         showProducts(productsList);
+
     })
     .catch(error => console.error("Error fetching products:", error));
+
+
+
+function renderCategoryButtons(products) {
+    const categoryContainer = document.getElementById("categoryButtons");
+    if (!categoryContainer) return;
+
+    const categories = ['all', ...new Set(products.map(p => p.category))];
+
+}
+
+function filterByCategory(selectedCategory, btnElement) {
+    // Buttons styling update
+    const buttons = document.querySelectorAll('#categoryButtons button');
+    buttons.forEach(btn => {
+        btn.classList.remove('btn-primary');
+        btn.classList.add('btn-outline-primary');
+    });
+    btnElement.classList.remove('btn-outline-primary');
+    btnElement.classList.add('btn-primary');
+
+    // Filtering logic
+    if (selectedCategory === "all") {
+        showProducts(productsList);
+    } else {
+        const filtered = productsList.filter(product => product.category.toLowerCase() === selectedCategory.toLowerCase());
+        showProducts(filtered);
+    }
+}
 
 function showProducts(products) {
     Cards.innerHTML = "";
 
-    products.forEach(product => { 
-       
+    products.forEach(product => {
+
         const imageUrl = product.thumbnail;
 
         Cards.innerHTML += `
@@ -37,6 +68,9 @@ function showProducts(products) {
         `;
     });
 }
+
+
+
 
 if (searchInput) {
     searchInput.addEventListener("input", () => {
@@ -67,7 +101,7 @@ async function fetchSingleProduct(id) {
     try {
         const response = await fetch(`https://dummyjson.com/products/${id}`);
         if (!response.ok) throw new Error("Product not found");
-        
+
         const product = await response.json();
         renderProductDetails(product);
     } catch (error) {

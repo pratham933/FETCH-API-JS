@@ -1,0 +1,77 @@
+/* Custom Font & Smooth Styling */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #f8f9fa;
+    color: #2b2d42;
+}
+
+/* Navbar Custom Styling */
+.navbar {
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.navbar-brand {
+    font-size: 1.4rem;
+    letter-spacing: -0.5px;
+    color: #0d6efd !important;
+}
+
+/* Main Details Card Container */
+#product-details-container {
+    border-radius: 20px;
+    background: #ffffff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
+    transition: all 0.3s ease;
+}
+
+/* Main Display Image Container */
+#mainImage {
+    border-radius: 12px;
+    transition: transform 0.4s ease;
+}
+
+#mainImage:hover {
+    transform: scale(1.02);
+}
+
+/* Gallery Thumbnails Custom UI */
+.img-thumbnail {
+    border-radius: 10px;
+    border: 2px solid #e9ecef;
+    transition: all 0.2s ease-in-out;
+}
+
+.img-thumbnail:hover {
+    border-color: #0d6efd;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(13, 110, 253, 0.2);
+}
+
+/* Category Badge & Rating Badge */
+.badge {
+    padding: 0.5em 0.8em;
+    font-weight: 600;
+    border-radius: 8px;
+}
+
+/* Button UI Enhancements */
+.btn-primary {
+    border-radius: 10px;
+    font-weight: 600;
+    padding: 10px 24px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(13, 110, 253, 0.3);
+}
+
+.btn-outline-secondary {
+    border-radius: 8px;
+    font-weight: 500;
+}
